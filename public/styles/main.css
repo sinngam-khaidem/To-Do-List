@@ -1,0 +1,29 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+footer {
+    margin-top: auto;
+}
+
+#some-title, #day{
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.list-group-item{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* border: 1px solid black; */
+    font-family: 'Inter', sans-serif;
+}
+
+#day-container{
+    padding-bottom: 30px;
+}
+
+#credit{
+    text-align: center;
+}

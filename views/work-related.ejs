@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container" id = "switch">
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li class="page-item" aria-current="page">
+          <a class="page-link" href="day-tasks.ejs">Day Tasks</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="work-related.ejs">Work Related</a></li>
+      </ul>
+    </nav>
+  </div>
+    <div class = "container" id = "tasks-container">
+          <form>
+            <div class="input-group mb-3">
+                <input id="userinput-work" type="text" class="form-control" placeholder="New task" name = "new-task">
+                <div class="input-group-append">
+                  <button class="btn btn-success" id="enter-work" type = "submit">Add</button>
+                </div>
+            </div>
+          </form>
+
+        <ul class="list-group" id = "task-list-work">
+            <% tasks.forEach((item)=>{ %>
+                <li class="list-group-item">
+                  <input class="form-check-input me-1" type="checkbox">
+                  <%= item%>
+                </li>
+            <% }) %>
+        </ul>
+    </div> 
+    <script src="script2.js" ></script>
+
+<%- include("partials/footer.ejs") %>
