@@ -2,7 +2,7 @@ import express from "express";
 //import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 //app.use(bodyParser.urlencoded({extended: true}));
@@ -38,41 +38,38 @@ function dateFormat(){
     return result;
 }
 
+//Getting today's date, month and year
+var today = dateFormat();
+var dateObj = {
+    ourDate: today["ourDate"],
+    ourFollowUp: today["ourFollowUp"],
+    ourMonth: today["ourMonth"],
+    ourYear: today["ourYear"],
+}
+
 //Tasks arrays
 var dayTasks = ["Watch Movie", "Take a nap", "Take another nap", "Take a third nap."];
 var workRelated = ["Complete the assignment", "Write a blog.", "Read papers", "Nap at work"];
 
 app.get("/", (req, res)=>{
-    var today = dateFormat();
     var data = {
-        ourDate: today["ourDate"],
-        ourFollowUp: today["ourFollowUp"],
-        ourMonth: today["ourMonth"],
-        ourYear: today["ourYear"],
+        ourDay: dateObj,
         tasks: dayTasks 
     }
     res.render("day-tasks.ejs", data);
 });
 
 app.get("/day-tasks.ejs", (req, res)=>{
-    var today = dateFormat();
     var data = {
-        ourDate: today["ourDate"],
-        ourFollowUp: today["ourFollowUp"],
-        ourMonth: today["ourMonth"],
-        ourYear: today["ourYear"],
+        ourDay: dateObj,
         tasks: dayTasks 
     }
     res.render("day-tasks.ejs", data);
 });
 
 app.get("/work-related.ejs", (req, res)=>{
-    var today = dateFormat();
     var data = {
-        ourDate: today["ourDate"],
-        ourFollowUp: today["ourFollowUp"],
-        ourMonth: today["ourMonth"],
-        ourYear: today["ourYear"],
+        ourDay: dateObj,
         tasks: workRelated, 
     }
     res.render("work-related.ejs", data);
